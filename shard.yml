@@ -1,0 +1,11 @@
+name: lib-conflicts
+version: 0.1.0
+
+authors:
+  - Luke van der Hoeven <hungerandthirst@gmail.com>
+
+license: MIT
+
+dependencies:
+  openssl:
+    github: datanoise/openssl.cr
