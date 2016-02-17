@@ -1,41 +1,19 @@
-# lib-conflicts
+# Problems
 
-TODO: Write a description here
+This project is to demo some problems found while exploring Crystal.
 
-## Installation
+## #1
 
+Seeing the following on `crystal spec`
 
-Add this to your application's `shard.yml`:
+```
+Error in /usr/local/Cellar/crystal-lang/0.12.0/src/openssl/lib_crypto.cr:28: already initialized constant LibCrypto::PKCS5_SALT_LEN
 
-```yaml
-dependencies:
-  lib-conflicts:
-    github: plukevdh/lib-conflicts
+  PKCS5_SALT_LEN     =  8
+  ^~~~~~~~~~~~~~
 ```
 
+Due to the `require "http/request"` in `spec/lib-conflicts_spec.cr`. The OpenSSL.cr lib seems to conflict with the built-in OpenSSL implementation and I can't figure out:
 
-## Usage
-
-
-```crystal
-require "lib-conflicts"
-```
-
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/plukevdh/lib-conflicts/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
-
-## Contributors
-
-- [plukevdh](https://github.com/plukevdh) Luke van der Hoeven - creator, maintainer
+a) Where `http/request` is including stdlib OpenSSL
+b) How to work around this issue.
